@@ -19,6 +19,10 @@ app.use(cors());
 //express midleware
 app.use("/posts", postRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Vítej v API");
+});
+
 const PORT = process.env.PORT || 5000;
 
 mongoose
