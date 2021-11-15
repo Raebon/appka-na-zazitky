@@ -1,11 +1,11 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import dotenv from "dotenv";
 import postRoutes from "./routes/posts.js";
 
 const app = express();
-dotenv.config();
 /*
 body-parser je deprecated v express ve verzi  >= 4.16.0  byl Parser znovu přidán
 app.use(bodyParser.json({limit: '30mb', extended:true}));
