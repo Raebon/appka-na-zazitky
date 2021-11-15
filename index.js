@@ -30,4 +30,4 @@ mongoose
   .then(() =>
     app.listen(PORT, () => console.log(`Server běží na portu ${PORT}`))
   )
-  .catch((err) => console.log(error.message));
+  .catch((error) => console.log(error.message));
