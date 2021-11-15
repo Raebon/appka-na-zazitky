@@ -25,9 +25,20 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-mongoose
+/* mongoose
   .connect(process.env.CONNECTION_URL, { useNewUrlParser: true })
   .then(() =>
     app.listen(PORT, () => console.log(`Server běží na portu ${PORT}`))
   )
   .catch((error) => console.log(error.message));
+ */
+mongoose
+  .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() =>
+    app.listen(PORT, () =>
+      console.log(`Server Running on Port: http://localhost:${PORT}`)
+    )
+  )
+  .catch((error) => console.log(`${error} did not connect`));
+
+mongoose.set("useFindAndModify", false);
