@@ -4,8 +4,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import postRoutes from "./routes/posts.js";
 
-const app = express();
 dotenv.config();
+const app = express();
 /*
 body-parser je deprecated v express ve verzi  >= 4.16.0  byl Parser znovu přidán
 app.use(bodyParser.json({limit: '30mb', extended:true}));
@@ -32,7 +32,16 @@ const PORT = process.env.PORT || 5000;
   )
   .catch((error) => console.log(error.message));
  */
+
 mongoose
+  .connect(process.env.CONNECTION_URL, { useNewUrlParser: true })
+  .then(() => console.log("Connected to MongoDB!"))
+  .catch((error) =>
+    console.error(`"Could not connect to MongoDB... "${error}`)
+  );
+app.listen(process.env.PORT || 5000);
+
+/* mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() =>
     app.listen(PORT, () =>
@@ -41,4 +50,4 @@ mongoose
   )
   .catch((error) => console.log(`${error} did not connect`));
 
-mongoose.set("useFindAndModify", false);
+mongoose.set("useFindAndModify", false); */
